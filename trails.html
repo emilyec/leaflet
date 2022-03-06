@@ -17,6 +17,27 @@
 
   </head>
 
+  <style>
+    .legend {
+      font-family: "Century Gothic";
+      text-align: left;
+      width: 190px;
+      height: 120px;
+      line-height: 18px;
+      background: white;
+      opacity: 0.7;
+  }
+    .legend i {
+        width: 20px;
+        height: 10px;
+        float: left;
+        opacity: 1;
+        padding: 3px;
+        margin-right: 5px;
+}
+
+  </style>
+
   <body>
     <div id="mapid" style="width: 600px; height: 500px;"></div>
     <!-- Our web map will get placed into this div element -->
@@ -26,7 +47,7 @@
       // Store the map in the variable 'map'.
       // "mapid" is the 'id' of the DOM element to contain the map.
       var map = L.map('mapid', {
-          center: [49.259569, -123.22615],
+          center: [49.255, -123.232],
           zoom: 12.5
         } // this object holds map options
       );
@@ -37,11 +58,12 @@
 
       legend.onAdd = function(map) {
       var div = L.DomUtil.create("div", "legend");
-      div.innerHTML += "<h4>Legend</h4>";
-      div.innerHTML += '<span style="color:#668F2E">Hiking</span><br>';
-      div.innerHTML += '<span style="color:#A6DB5C">Hiking/Cycling/Equestrian</span><br>';
-      div.innerHTML += '<span style="color:#DB900A">Hiking/Cycling</span><br>';
-      div.innerHTML += '<span style="color:#BAA5C1">Other</span><br>';
+      div.setAttribute("style","background-color:white;opacity:0.7;padding:10px")
+      div.innerHTML = "<p><b>Trail Usage</b></p>";
+      div.innerHTML += '<i style="background:#668F2E"></i><span>Hiking</span><br>';
+      div.innerHTML += '<i style="background: #A6DB5C"></i><span>Hiking/Cycling/Equestrian</span><br>';
+      div.innerHTML += '<i style="background: #DB900A"></i><span>Hiking/Cycling</span><br>';
+      div.innerHTML += '<i style="background: #BAA5C1"></i><span>Other</span><br>';
       return div;
       };
 
@@ -70,7 +92,7 @@
 
           return {
             "color": colorToUse,
-            "weight": 2
+            "weight": 2,
   };
 }
 
